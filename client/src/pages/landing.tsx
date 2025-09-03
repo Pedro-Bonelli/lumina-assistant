@@ -32,11 +32,10 @@ export default function LandingPage() {
           </Link>
         </div>
       </header>
-
       {/* Hero Section */}
       <section className="pt-24 pb-16 hero-gradient">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-[#003152]">
             Menos tempo corrigindo,<br />
             <span className="text-secondary">mais tempo ensinando.</span>
           </h1>
@@ -64,7 +63,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
       {/* Como Funciona Section */}
       <section id="como-funciona" className="py-16 bg-card">
         <div className="container mx-auto px-6">
@@ -101,7 +99,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
       {/* Funcionalidades Section */}
       <section id="funcionalidades" className="py-16 bg-muted">
         <div className="container mx-auto px-6">
@@ -135,7 +132,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
       {/* Planos Section */}
       <section id="planos" className="py-16 bg-background">
         <div className="container mx-auto px-6">
@@ -191,7 +187,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
       {/* Opiniões Section */}
       <section id="opinies" className="py-16 bg-muted">
         <div className="container mx-auto px-6">
@@ -253,7 +248,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
       {/* Contact Section */}
       <section id="contato" className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-6 text-center">
@@ -270,7 +264,6 @@ export default function LandingPage() {
           </Link>
         </div>
       </section>
-
       {/* Footer */}
       <footer className="bg-primary text-primary-foreground py-8">
         <div className="container mx-auto px-6">
