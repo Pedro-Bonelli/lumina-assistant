@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { Home, ListTodo, BarChart3, Users, Settings } from "lucide-react";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
+import { useAuth } from "@/contexts/AuthContext";
 import TeacherHome from "@/components/teacher/home";
 import TeacherActivities from "@/components/teacher/activities";
 import TeacherReports from "@/components/teacher/reports";
@@ -27,6 +28,7 @@ const pageTitles = {
 export default function TeacherDashboard() {
   const [currentPage, setCurrentPage] = useState('home');
   const [, setLocation] = useLocation();
+  const { logout } = useAuth();
 
   const handleSidebarClick = (id: string) => {
     const item = sidebarItems.find(item => item.id === id);
@@ -36,6 +38,7 @@ export default function TeacherDashboard() {
   };
 
   const handleLogout = () => {
+    logout();
     setLocation('/login');
   };
 

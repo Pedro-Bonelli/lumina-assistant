@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { Home, BarChart3, Lightbulb, Settings } from "lucide-react";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
+import { useAuth } from "@/contexts/AuthContext";
 import StudentHome from "@/components/student/home";
 import StudentStudyTips from "@/components/student/study-tips";
 
@@ -23,6 +24,7 @@ const pageTitles = {
 export default function StudentDashboard() {
   const [currentPage, setCurrentPage] = useState('home');
   const [, setLocation] = useLocation();
+  const { logout } = useAuth();
 
   const handleSidebarClick = (id: string) => {
     const item = sidebarItems.find(item => item.id === id);
@@ -32,6 +34,7 @@ export default function StudentDashboard() {
   };
 
   const handleLogout = () => {
+    logout();
     setLocation('/login');
   };
 

@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { Home, BarChart3, Users, Settings } from "lucide-react";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
+import { useAuth } from "@/contexts/AuthContext";
 import ManagerHome from "@/components/manager/home";
 import ManagerReports from "@/components/manager/reports";
 import ManagerAccountManagement from "@/components/manager/account-management";
@@ -24,6 +25,7 @@ const pageTitles = {
 export default function ManagerDashboard() {
   const [currentPage, setCurrentPage] = useState('home');
   const [, setLocation] = useLocation();
+  const { logout } = useAuth();
 
   const handleSidebarClick = (id: string) => {
     const item = sidebarItems.find(item => item.id === id);
@@ -33,6 +35,7 @@ export default function ManagerDashboard() {
   };
 
   const handleLogout = () => {
+    logout();
     setLocation('/login');
   };
 
