@@ -1,66 +1,173 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Users, GraduationCap, BookOpen, ListTodo, TrendingUp } from "lucide-react";
-import type { InstitutionStats } from "@/lib/types";
+import { useQuery } from "@tanstack/react-query";
+import { useAuth } from "@/contexts/AuthContext";
+import type { Class, User, Activity, Submission } from "@shared/schema";
 
 interface ManagerHomeProps {
   onNavigate: (page: string) => void;
 }
 
-const institutionStats: InstitutionStats = {
-  totalStudents: 2847,
-  totalTeachers: 89,
-  totalClasses: 156,
-  averageGrade: 7.9
+type InstitutionStats = {
+  totalStudents: number;
+  totalTeachers: number;
+  totalClasses: number;
+  averageGrade: number;
 };
 
-const performanceByGrade = [
-  { grade: "6º Ano", average: 8.2, percentage: 82 },
-  { grade: "7º Ano", average: 7.8, percentage: 78 },
-  { grade: "8º Ano", average: 7.9, percentage: 79 },
-  { grade: "9º Ano", average: 8.1, percentage: 81 },
-];
-
-const platformActivity = {
-  monthlyCorrections: 1247,
-  activeTeachers: "78/89",
-  timeSaved: "342h"
+type PerformanceByGrade = {
+  grade: string;
+  average: number;
+  percentage: number;
 };
 
-const recentActivities = [
-  {
-    id: "1",
-    type: "correction",
-    description: "Prova corrigida - 1º A",
-    teacher: "Prof. Ana Silva",
-    timeAgo: "há 2 horas",
-    icon: "✅"
-  },
-  {
-    id: "2", 
-    type: "activity",
-    description: "Nova atividade criada",
-    teacher: "Prof. Carlos Oliveira", 
-    timeAgo: "há 4 horas",
-    icon: "➕"
-  },
-  {
-    id: "3",
-    type: "report",
-    description: "Relatório gerado",
-    teacher: "Sistema",
-    timeAgo: "há 6 horas", 
-    icon: "📊"
-  }
-];
+type PlatformActivity = {
+  monthlyCorrections: number;
+  activeTeachers: string;
+  timeSaved: string;
+};
+
+type RecentActivity = {
+  id: string;
+  type: string;
+  description: string;
+  teacher: string;
+  timeAgo: string;
+  icon: string;
+};
 
 export default function ManagerHome({ onNavigate }: ManagerHomeProps) {
+  const { user } = useAuth();
+
+  // Fetch all data for manager overview
+  const { data: allClasses, isLoading: classesLoading } = useQuery<Class[]>({
+    queryKey: ["/api/classes"],
+  });
+
+  const { data: allSubmissions, isLoading: submissionsLoading } = useQuery<Submission[]>({
+    queryKey: ["/api/submissions"],
+  });
+
+  const isLoading = classesLoading || submissionsLoading;
+
+  if (isLoading) {
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <Skeleton className="h-8 w-64" />
+            <Skeleton className="h-4 w-48 mt-2" />
+          </div>
+          <div className="text-right">
+            <Skeleton className="h-4 w-32" />
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[1, 2, 3, 4].map((i) => (
+            <Card key={i}>
+              <CardContent className="p-4">
+                <Skeleton className="h-8 w-16 mb-2" />
+                <Skeleton className="h-4 w-24 mb-2" />
+                <Skeleton className="h-4 w-20" />
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {[1, 2].map((i) => (
+            <Card key={i}>
+              <CardContent className="p-6">
+                <Skeleton className="h-6 w-32 mb-4" />
+                <div className="space-y-3">
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-full" />
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Calculate institution statistics
+  const totalClasses = allClasses?.length || 0;
+  const totalStudents = allClasses?.reduce((sum, cls) => sum + (cls.studentCount || 0), 0) || 0;
+  
+  // Calculate average grade from all reviewed submissions
+  const reviewedSubmissions = allSubmissions?.filter(sub => 
+    sub.isReviewed && sub.grade !== null
+  ) || [];
+  
+  const averageGrade = reviewedSubmissions.length > 0 
+    ? reviewedSubmissions.reduce((sum, sub) => sum + parseFloat(sub.grade || "0"), 0) / reviewedSubmissions.length
+    : 0;
+
+  // Calculate monthly corrections (this month)
+  const now = new Date();
+  const monthlyCorrections = allSubmissions?.filter(sub => {
+    const submissionDate = new Date(sub.submittedAt || "");
+    return submissionDate.getMonth() === now.getMonth() && 
+           submissionDate.getFullYear() === now.getFullYear() &&
+           sub.isReviewed;
+  }).length || 0;
+
+  const institutionStats: InstitutionStats = {
+    totalStudents,
+    totalTeachers: 5, // Mock data - we don't have users by type in current structure
+    totalClasses,
+    averageGrade: Math.round(averageGrade * 10) / 10
+  };
+
+  const performanceByGrade: PerformanceByGrade[] = [
+    { grade: "6º Ano", average: 8.2, percentage: 82 },
+    { grade: "7º Ano", average: 7.8, percentage: 78 },
+    { grade: "8º Ano", average: 7.9, percentage: 79 },
+    { grade: "9º Ano", average: 8.1, percentage: 81 },
+  ];
+
+  const platformActivity: PlatformActivity = {
+    monthlyCorrections,
+    activeTeachers: "5/5", // Mock data
+    timeSaved: "150h" // Mock calculation
+  };
+
+  const recentActivities: RecentActivity[] = [
+    {
+      id: "1",
+      type: "correction",
+      description: "Atividade corrigida - Matemática",
+      teacher: "Sistema",
+      timeAgo: "há 1 hora",
+      icon: "✅"
+    },
+    {
+      id: "2", 
+      type: "activity",
+      description: "Nova atividade criada",
+      teacher: "Professor", 
+      timeAgo: "há 3 horas",
+      icon: "➕"
+    },
+    {
+      id: "3",
+      type: "report",
+      description: "Relatório atualizado",
+      teacher: "Sistema",
+      timeAgo: "há 5 horas", 
+      icon: "📊"
+    }
+  ];
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-foreground">Dashboard Institucional</h2>
-          <p className="text-muted-foreground">Escola Municipal Santos Dumont</p>
+          <p className="text-muted-foreground">Lumina Assistant - Escola Municipal</p>
         </div>
         <div className="text-right">
           <p className="text-sm text-muted-foreground">Última atualização: há 5 min</p>

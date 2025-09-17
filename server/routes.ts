@@ -89,6 +89,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Submissions routes
+  app.get("/api/submissions", async (req, res) => {
+    try {
+      const submissions = await storage.getAllSubmissions();
+      res.json(submissions);
+    } catch (error) {
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
   app.get("/api/submissions/activity/:activityId", async (req, res) => {
     try {
       const submissions = await storage.getSubmissionsByActivity(req.params.activityId);

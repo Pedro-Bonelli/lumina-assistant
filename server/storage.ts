@@ -22,6 +22,7 @@ export interface IStorage {
   
   // Submissions
   getSubmission(id: string): Promise<Submission | undefined>;
+  getAllSubmissions(): Promise<Submission[]>;
   getSubmissionsByActivity(activityId: string): Promise<Submission[]>;
   getSubmissionsByStudent(studentId: string): Promise<Submission[]>;
   createSubmission(submission: InsertSubmission): Promise<Submission>;
@@ -158,7 +159,13 @@ export class MemStorage implements IStorage {
 
   async createClass(insertClass: InsertClass): Promise<Class> {
     const id = randomUUID();
-    const classData: Class = { ...insertClass, id, studentCount: 0, createdAt: new Date() };
+    const classData: Class = {
+      ...insertClass,
+      id,
+      studentCount: 0,
+      createdAt: new Date(),
+      teacherId: insertClass.teacherId ?? null
+    };
     this.classes.set(id, classData);
     return classData;
   }
@@ -178,7 +185,17 @@ export class MemStorage implements IStorage {
 
   async createActivity(insertActivity: InsertActivity): Promise<Activity> {
     const id = randomUUID();
-    const activity: Activity = { ...insertActivity, id, createdAt: new Date() };
+    const activity: Activity = {
+      ...insertActivity,
+      id,
+      createdAt: new Date(),
+      teacherId: insertActivity.teacherId ?? null,
+      classId: insertActivity.classId ?? null,
+      dueDate: insertActivity.dueDate ?? null,
+      maxGrade: insertActivity.maxGrade ?? "10.0",
+      criteria: insertActivity.criteria ?? null,
+      status: insertActivity.status ?? "draft"
+    };
     this.activities.set(id, activity);
     return activity;
   }
@@ -197,6 +214,10 @@ export class MemStorage implements IStorage {
     return this.submissions.get(id);
   }
 
+  async getAllSubmissions(): Promise<Submission[]> {
+    return Array.from(this.submissions.values());
+  }
+
   async getSubmissionsByActivity(activityId: string): Promise<Submission[]> {
     return Array.from(this.submissions.values()).filter(submission => submission.activityId === activityId);
   }
@@ -207,7 +228,18 @@ export class MemStorage implements IStorage {
 
   async createSubmission(insertSubmission: InsertSubmission): Promise<Submission> {
     const id = randomUUID();
-    const submission: Submission = { ...insertSubmission, id, submittedAt: new Date() };
+    const submission: Submission = {
+      ...insertSubmission,
+      id,
+      submittedAt: new Date(),
+      content: insertSubmission.content ?? null,
+      activityId: insertSubmission.activityId ?? null,
+      studentId: insertSubmission.studentId ?? null,
+      grade: insertSubmission.grade ?? null,
+      feedback: insertSubmission.feedback ?? null,
+      aiAnalysis: insertSubmission.aiAnalysis ?? null,
+      isReviewed: insertSubmission.isReviewed ?? false
+    };
     this.submissions.set(id, submission);
     return submission;
   }
@@ -232,7 +264,13 @@ export class MemStorage implements IStorage {
 
   async createEnrollment(insertEnrollment: InsertEnrollment): Promise<Enrollment> {
     const id = randomUUID();
-    const enrollment: Enrollment = { ...insertEnrollment, id, enrolledAt: new Date() };
+    const enrollment: Enrollment = {
+      ...insertEnrollment,
+      id,
+      enrolledAt: new Date(),
+      classId: insertEnrollment.classId ?? null,
+      studentId: insertEnrollment.studentId ?? null
+    };
     this.enrollments.set(id, enrollment);
     return enrollment;
   }
