@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { GraduationCap, Upload, Settings, Brain, CheckCircle, Star } from "lucide-react";
+import { Upload, Settings, Brain, CheckCircle, Star } from "lucide-react";
+import luminaLogo from "@assets/Lumina_logo_1758146247673.png";
 
 export default function LandingPage() {
   return (
@@ -9,7 +10,7 @@ export default function LandingPage() {
       <header className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <GraduationCap className="h-8 w-8 text-secondary" />
+            <img src={luminaLogo} alt="Lumina Assistant" className="h-8 w-8" />
             <span className="text-xl font-bold text-primary">Lumina Assistant</span>
           </div>
           
@@ -270,7 +271,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <GraduationCap className="h-6 w-6 text-secondary" />
+                <img src={luminaLogo} alt="Lumina Assistant" className="h-6 w-6" />
                 <span className="font-bold text-lg">Lumina Assistant</span>
               </div>
               <p className="text-primary-foreground/80">Clareza para quem ensina.</p>

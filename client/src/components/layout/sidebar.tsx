@@ -1,6 +1,6 @@
-import { GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import luminaLogo from "@assets/Lumina_logo_1758146247673.png";
 
 interface SidebarItem {
   id: string;
@@ -19,7 +19,7 @@ export function Sidebar({ items, onItemClick }: SidebarProps) {
   return (
     <nav className="w-20 bg-sidebar flex flex-col items-center py-6 space-y-6">
       <div className="text-sidebar-primary text-xl">
-        <GraduationCap />
+        <img src={luminaLogo} alt="Lumina Assistant" className="h-6 w-6" />
       </div>
       <div className="flex flex-col space-y-4">
         {items.map((item) => {

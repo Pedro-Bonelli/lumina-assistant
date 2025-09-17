@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { GraduationCap, University, Presentation, Bus } from "lucide-react";
+import { University, Presentation, Bus } from "lucide-react";
+import luminaLogo from "@assets/Lumina_logo_1758146247673.png";
 
 export default function LoginPage() {
   const [, setLocation] = useLocation();
@@ -18,7 +19,7 @@ export default function LoginPage() {
         <CardContent className="p-8">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center space-x-2 mb-4">
-              <GraduationCap className="h-8 w-8 text-secondary" />
+              <img src={luminaLogo} alt="Lumina Assistant" className="h-8 w-8" />
               <span className="text-2xl font-bold text-foreground">Lumina Assistant</span>
             </div>
             <h2 className="text-3xl font-bold text-foreground">Escolha seu perfil</h2>
