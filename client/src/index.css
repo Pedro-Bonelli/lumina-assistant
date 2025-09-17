@@ -3,42 +3,55 @@
 @tailwind utilities;
 
 :root {
+  /* Brand Colors - Based on Lumina Logo */
+  --brand-navy: hsl(205, 84%, 14%);
+  --brand-teal: hsl(184, 70%, 45%);
+  --brand-gradient-start: hsl(205, 84%, 14%);
+  --brand-gradient-end: hsl(184, 70%, 45%);
+  
+  /* Core Theme */
   --background: hsl(210, 20%, 98%);
-  --foreground: hsl(204, 100%, 16%);
+  --foreground: hsl(205, 84%, 14%);
   --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(204, 100%, 16%);
+  --card-foreground: hsl(205, 84%, 14%);
   --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(204, 100%, 16%);
-  --primary: hsl(204, 100%, 16%);
+  --popover-foreground: hsl(205, 84%, 14%);
+  --primary: hsl(205, 84%, 14%);
   --primary-foreground: hsl(0, 0%, 98%);
-  --secondary: hsl(180, 63%, 49%);
-  --secondary-foreground: hsl(204, 100%, 16%);
+  --secondary: hsl(184, 70%, 45%);
+  --secondary-foreground: hsl(205, 84%, 14%);
   --muted: hsl(210, 20%, 96%);
   --muted-foreground: hsl(215, 16%, 47%);
-  --accent: hsl(180, 63%, 49%);
-  --accent-foreground: hsl(204, 100%, 16%);
-  --destructive: hsl(0, 84%, 70%);
+  --accent: hsl(184, 70%, 45%);
+  --accent-foreground: hsl(205, 84%, 14%);
+  --destructive: hsl(0, 84%, 60%);
   --destructive-foreground: hsl(0, 0%, 98%);
   --success: hsl(160, 84%, 39%);
   --success-foreground: hsl(0, 0%, 98%);
   --warning: hsl(43, 96%, 56%);
-  --warning-foreground: hsl(204, 100%, 16%);
+  --warning-foreground: hsl(205, 84%, 14%);
   --border: hsl(214, 32%, 91%);
   --input: hsl(214, 32%, 91%);
-  --ring: hsl(180, 63%, 49%);
-  --chart-1: hsl(180, 63%, 49%);
-  --chart-2: hsl(160, 84%, 39%);
-  --chart-3: hsl(43, 96%, 56%);
-  --chart-4: hsl(147, 79%, 42%);
-  --chart-5: hsl(341, 75%, 51%);
-  --sidebar: hsl(204, 100%, 16%);
+  --ring: hsl(184, 70%, 45%);
+  
+  /* Chart Colors - Lumina Palette */
+  --chart-1: hsl(184, 70%, 45%);
+  --chart-2: hsl(205, 65%, 40%);
+  --chart-3: hsl(201, 80%, 45%);
+  --chart-4: hsl(173, 60%, 42%);
+  --chart-5: hsl(196, 62%, 34%);
+  
+  /* Sidebar */
+  --sidebar: hsl(205, 84%, 14%);
   --sidebar-foreground: hsl(0, 0%, 98%);
-  --sidebar-primary: hsl(180, 63%, 49%);
-  --sidebar-primary-foreground: hsl(204, 100%, 16%);
-  --sidebar-accent: hsl(180, 63%, 49%);
-  --sidebar-accent-foreground: hsl(204, 100%, 16%);
-  --sidebar-border: hsl(204, 100%, 20%);
-  --sidebar-ring: hsl(180, 63%, 49%);
+  --sidebar-primary: hsl(184, 70%, 45%);
+  --sidebar-primary-foreground: hsl(205, 84%, 14%);
+  --sidebar-accent: hsl(184, 70%, 45%);
+  --sidebar-accent-foreground: hsl(205, 84%, 14%);
+  --sidebar-border: hsl(205, 84%, 20%);
+  --sidebar-ring: hsl(184, 70%, 45%);
+  
+  /* Typography */
   --font-sans: "Inter", system-ui, sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -46,37 +59,53 @@
 }
 
 .dark {
-  --background: hsl(204, 100%, 16%);
+  /* Brand Colors - Darker versions for dark mode */
+  --brand-navy: hsl(205, 84%, 12%);
+  --brand-teal: hsl(184, 70%, 40%);
+  --brand-gradient-start: hsl(205, 84%, 12%);
+  --brand-gradient-end: hsl(184, 70%, 40%);
+  
+  /* Core Theme - Dark Mode */
+  --background: hsl(205, 84%, 12%);
   --foreground: hsl(0, 0%, 98%);
-  --card: hsl(204, 100%, 18%);
+  --card: hsl(205, 84%, 15%);
   --card-foreground: hsl(0, 0%, 98%);
-  --popover: hsl(204, 100%, 16%);
+  --popover: hsl(205, 84%, 12%);
   --popover-foreground: hsl(0, 0%, 98%);
-  --primary: hsl(180, 63%, 49%);
-  --primary-foreground: hsl(204, 100%, 16%);
-  --secondary: hsl(204, 100%, 20%);
+  --primary: hsl(184, 70%, 45%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --secondary: hsl(205, 84%, 20%);
   --secondary-foreground: hsl(0, 0%, 98%);
-  --muted: hsl(204, 100%, 20%);
+  --muted: hsl(205, 84%, 18%);
   --muted-foreground: hsl(215, 20%, 65%);
-  --accent: hsl(180, 63%, 49%);
-  --accent-foreground: hsl(204, 100%, 16%);
-  --destructive: hsl(0, 84%, 60%);
+  --accent: hsl(184, 70%, 45%);
+  --accent-foreground: hsl(205, 84%, 14%);
+  --destructive: hsl(0, 84%, 55%);
   --destructive-foreground: hsl(0, 0%, 98%);
   --success: hsl(160, 84%, 35%);
   --success-foreground: hsl(0, 0%, 98%);
   --warning: hsl(43, 96%, 50%);
-  --warning-foreground: hsl(204, 100%, 16%);
-  --border: hsl(204, 100%, 22%);
-  --input: hsl(204, 100%, 22%);
-  --ring: hsl(180, 63%, 49%);
-  --sidebar: hsl(204, 100%, 18%);
+  --warning-foreground: hsl(205, 84%, 14%);
+  --border: hsl(205, 84%, 22%);
+  --input: hsl(205, 84%, 22%);
+  --ring: hsl(184, 70%, 45%);
+  
+  /* Chart Colors - Dark Mode */
+  --chart-1: hsl(184, 70%, 45%);
+  --chart-2: hsl(205, 65%, 50%);
+  --chart-3: hsl(201, 80%, 55%);
+  --chart-4: hsl(173, 60%, 50%);
+  --chart-5: hsl(196, 62%, 45%);
+  
+  /* Sidebar - Dark Mode */
+  --sidebar: hsl(205, 84%, 15%);
   --sidebar-foreground: hsl(0, 0%, 98%);
-  --sidebar-primary: hsl(180, 63%, 49%);
-  --sidebar-primary-foreground: hsl(204, 100%, 16%);
-  --sidebar-accent: hsl(180, 63%, 49%);
-  --sidebar-accent-foreground: hsl(204, 100%, 16%);
-  --sidebar-border: hsl(204, 100%, 22%);
-  --sidebar-ring: hsl(180, 63%, 49%);
+  --sidebar-primary: hsl(184, 70%, 45%);
+  --sidebar-primary-foreground: hsl(205, 84%, 14%);
+  --sidebar-accent: hsl(184, 70%, 45%);
+  --sidebar-accent-foreground: hsl(205, 84%, 14%);
+  --sidebar-border: hsl(205, 84%, 22%);
+  --sidebar-ring: hsl(184, 70%, 45%);
 }
 
 @layer base {
@@ -95,7 +124,7 @@
 
 @layer components {
   .hero-gradient {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+    background: linear-gradient(135deg, var(--brand-gradient-start) 0%, var(--brand-gradient-end) 100%);
   }
 
   .card-hover {

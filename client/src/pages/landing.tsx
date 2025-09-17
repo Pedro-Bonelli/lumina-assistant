@@ -36,9 +36,9 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="pt-24 pb-16 hero-gradient">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-[#003152]">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-primary-foreground drop-shadow-sm">
             Menos tempo corrigindo,<br />
-            <span className="text-secondary">mais tempo ensinando.</span>
+            <span className="text-secondary-foreground">mais tempo ensinando.</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto">
             Automatizamos correções e geramos relatórios práticos para você dedicar mais tempo aos alunos.
