@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import luminaLogo from "@assets/Lumina_logo_1758146247673.png";
+import luminaLogo from "@assets/lumina_logo_v2_1759417231276.png";
 
 interface SidebarItem {
   id: string;

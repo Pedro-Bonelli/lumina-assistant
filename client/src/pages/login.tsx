@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { University, Presentation, Bus } from "lucide-react";
-import luminaLogo from "@assets/Lumina_logo_1758146247673.png";
+import luminaLogo from "@assets/lumina_logo_v2_1759417231276.png";
 
 export default function LoginPage() {
   const [, setLocation] = useLocation();

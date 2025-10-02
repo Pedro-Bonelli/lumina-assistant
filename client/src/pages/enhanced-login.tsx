@@ -10,7 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2, University, Presentation, UserCog, Eye, EyeOff } from "lucide-react";
 import { useAuth, type UserType } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
-import luminaLogo from "@assets/Lumina_logo_1758146247673.png";
+import luminaLogo from "@assets/lumina_logo_v2_1759417231276.png";
 
 export default function EnhancedLoginPage() {
   const [, setLocation] = useLocation();
