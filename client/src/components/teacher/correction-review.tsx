@@ -1,33 +1,120 @@
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowLeft, Check, Edit } from "lucide-react";
+import { ArrowLeft, Check, Edit, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface CorrectionReviewProps {
   onBack: () => void;
 }
 
-const correctionData = {
-  student: "João Silva",
-  activity: "Prova de Equações do 2º Grau",
-  finalGrade: "8.5",
-  questions: [
-    {
-      id: 1,
-      title: "Questão 1",
-      score: "10/10",
-      feedback: "Excelente! O aluno aplicou corretamente a fórmula e chegou ao resultado correto.",
-      status: "correct" as const
-    },
-    {
-      id: 2,
-      title: "Questão 2", 
-      score: "7/10",
-      feedback: "Resultado correto, mas faltou mostrar o desenvolvimento do cálculo.",
-      status: "partial" as const
-    }
-  ]
-};
+const students = [
+  {
+    name: "João Silva",
+    activity: "Prova de Equações do 2º Grau",
+    finalGrade: "8.5",
+    questions: [
+      {
+        id: 1,
+        title: "Questão 1",
+        score: "10/10",
+        feedback: "Excelente! O aluno aplicou corretamente a fórmula e chegou ao resultado correto.",
+        status: "correct" as const
+      },
+      {
+        id: 2,
+        title: "Questão 2", 
+        score: "7/10",
+        feedback: "Resultado correto, mas faltou mostrar o desenvolvimento do cálculo.",
+        status: "partial" as const
+      },
+      {
+        id: 3,
+        title: "Questão 3",
+        score: "8/10",
+        feedback: "Boa resolução, mas poderia ter explicado melhor o raciocínio.",
+        status: "partial" as const
+      },
+      {
+        id: 4,
+        title: "Questão 4",
+        score: "9/10",
+        feedback: "Excelente desenvolvimento e apresentação clara.",
+        status: "correct" as const
+      }
+    ]
+  },
+  {
+    name: "Maria Santos",
+    activity: "Prova de Equações do 2º Grau",
+    finalGrade: "9.2",
+    questions: [
+      {
+        id: 1,
+        title: "Questão 1",
+        score: "10/10",
+        feedback: "Perfeito! Demonstração completa e correta.",
+        status: "correct" as const
+      },
+      {
+        id: 2,
+        title: "Questão 2",
+        score: "9/10",
+        feedback: "Muito bom, pequeno erro de notação.",
+        status: "correct" as const
+      },
+      {
+        id: 3,
+        title: "Questão 3",
+        score: "9/10",
+        feedback: "Excelente resolução com todos os passos.",
+        status: "correct" as const
+      },
+      {
+        id: 4,
+        title: "Questão 4",
+        score: "9/10",
+        feedback: "Ótima resposta, muito bem explicada.",
+        status: "correct" as const
+      }
+    ]
+  },
+  {
+    name: "Pedro Oliveira",
+    activity: "Prova de Equações do 2º Grau",
+    finalGrade: "6.5",
+    questions: [
+      {
+        id: 1,
+        title: "Questão 1",
+        score: "7/10",
+        feedback: "Resposta parcialmente correta, faltou completar o raciocínio.",
+        status: "partial" as const
+      },
+      {
+        id: 2,
+        title: "Questão 2",
+        score: "6/10",
+        feedback: "Erro no cálculo do discriminante.",
+        status: "partial" as const
+      },
+      {
+        id: 3,
+        title: "Questão 3",
+        score: "6/10",
+        feedback: "Resposta incompleta, faltou finalizar.",
+        status: "partial" as const
+      },
+      {
+        id: 4,
+        title: "Questão 4",
+        score: "7/10",
+        feedback: "Boa tentativa, mas com erro no desenvolvimento.",
+        status: "partial" as const
+      }
+    ]
+  }
+];
 
 const statusConfig = {
   correct: { bg: "bg-success/10", border: "border-success/20", text: "text-success" },
@@ -36,6 +123,21 @@ const statusConfig = {
 };
 
 export default function CorrectionReview({ onBack }: CorrectionReviewProps) {
+  const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
+  const correctionData = students[currentStudentIndex];
+
+  const handleNextStudent = () => {
+    if (currentStudentIndex < students.length - 1) {
+      setCurrentStudentIndex(currentStudentIndex + 1);
+    }
+  };
+
+  const handlePreviousStudent = () => {
+    if (currentStudentIndex > 0) {
+      setCurrentStudentIndex(currentStudentIndex - 1);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="mb-6">
@@ -48,8 +150,35 @@ export default function CorrectionReview({ onBack }: CorrectionReviewProps) {
           <ArrowLeft className="h-4 w-4 mr-2" />
           Voltar às atividades
         </Button>
-        <h2 className="text-2xl font-bold text-foreground">Revisão de Correções</h2>
-        <p className="text-muted-foreground">{correctionData.activity} - {correctionData.student}</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-2xl font-bold text-foreground">Revisão de Correções</h2>
+            <p className="text-muted-foreground">{correctionData.activity} - {correctionData.name}</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button
+              onClick={handlePreviousStudent}
+              disabled={currentStudentIndex === 0}
+              variant="outline"
+              size="sm"
+              data-testid="button-previous-student"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            <span className="text-sm text-muted-foreground px-3">
+              Aluno {currentStudentIndex + 1} de {students.length}
+            </span>
+            <Button
+              onClick={handleNextStudent}
+              disabled={currentStudentIndex === students.length - 1}
+              variant="outline"
+              size="sm"
+              data-testid="button-next-student"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[calc(100vh-200px)]">
@@ -166,9 +295,11 @@ export default function CorrectionReview({ onBack }: CorrectionReviewProps) {
                   Aprovar Todas
                 </Button>
                 <Button 
+                  onClick={handleNextStudent}
+                  disabled={currentStudentIndex === students.length - 1}
                   variant="outline" 
                   className="px-6"
-                  data-testid="button-next-student"
+                  data-testid="button-next-student-bottom"
                 >
                   Próximo Aluno
                 </Button>

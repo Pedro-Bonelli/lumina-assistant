@@ -117,10 +117,24 @@ export default function TeacherReports() {
         <Card>
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-4">Evolução Temporal</h3>
-            <div className="h-64 bg-muted rounded-md flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-4xl text-muted-foreground mb-2">📈</div>
-                <p className="text-sm text-muted-foreground">Gráfico de evolução<br />das notas por período</p>
+            <div className="h-64 relative">
+              <div className="absolute bottom-0 left-0 right-0 h-full flex items-end justify-around px-4 pb-8">
+                <div className="flex flex-col items-center flex-1">
+                  <div className="w-full bg-accent rounded-t-md transition-all hover:opacity-80" style={{ height: '60%' }}></div>
+                  <span className="text-xs mt-2 text-muted-foreground">Set</span>
+                </div>
+                <div className="flex flex-col items-center flex-1">
+                  <div className="w-full bg-accent rounded-t-md transition-all hover:opacity-80" style={{ height: '70%' }}></div>
+                  <span className="text-xs mt-2 text-muted-foreground">Out</span>
+                </div>
+                <div className="flex flex-col items-center flex-1">
+                  <div className="w-full bg-accent rounded-t-md transition-all hover:opacity-80" style={{ height: '85%' }}></div>
+                  <span className="text-xs mt-2 text-muted-foreground">Nov</span>
+                </div>
+                <div className="flex flex-col items-center flex-1">
+                  <div className="w-full bg-success rounded-t-md transition-all hover:opacity-80" style={{ height: '90%' }}></div>
+                  <span className="text-xs mt-2 text-muted-foreground">Dez</span>
+                </div>
               </div>
             </div>
           </CardContent>

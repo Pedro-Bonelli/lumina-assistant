@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -36,6 +37,8 @@ const statusConfig = {
 
 export default function TeacherHome({ onNavigate }: TeacherHomeProps) {
   const { user } = useAuth();
+  const [selectedSubject, setSelectedSubject] = useState("all-subjects");
+  const [selectedYear, setSelectedYear] = useState("all-years");
 
   // Fetch teacher's classes
   const { data: teacherClasses, isLoading: classesLoading } = useQuery<Class[]>({
@@ -135,7 +138,7 @@ export default function TeacherHome({ onNavigate }: TeacherHomeProps) {
   ];
 
   // Process classes data
-  const classesData: ClassData[] = teacherClasses?.map(cls => {
+  const allClassesData: ClassData[] = teacherClasses?.map(cls => {
     const classActivities = teacherActivities?.filter(activity => activity.classId === cls.id) || [];
     const classActivityIds = classActivities.map(a => a.id);
     const classPendingSubmissions = allSubmissions?.filter(sub => 
@@ -156,6 +159,13 @@ export default function TeacherHome({ onNavigate }: TeacherHomeProps) {
       activitiesCount: classActivities.length
     };
   }) || [];
+
+  // Filter classes based on selected filters
+  const classesData = allClassesData.filter(cls => {
+    const subjectMatch = selectedSubject === "all-subjects" || cls.subject.toLowerCase() === selectedSubject;
+    const yearMatch = selectedYear === "all-years" || cls.name.includes(selectedYear + "º");
+    return subjectMatch && yearMatch;
+  });
 
   return (
     <div className="space-y-6">
@@ -199,17 +209,19 @@ export default function TeacherHome({ onNavigate }: TeacherHomeProps) {
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-lg font-semibold">Suas Turmas</h3>
             <div className="flex space-x-4">
-              <Select defaultValue="all-subjects">
+              <Select value={selectedSubject} onValueChange={setSelectedSubject}>
                 <SelectTrigger className="w-40">
                   <SelectValue placeholder="Matéria" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all-subjects">Todas as matérias</SelectItem>
-                  <SelectItem value="mathematics">Matemática</SelectItem>
-                  <SelectItem value="physics">Física</SelectItem>
+                  <SelectItem value="matemática">Matemática</SelectItem>
+                  <SelectItem value="física">Física</SelectItem>
+                  <SelectItem value="química">Química</SelectItem>
+                  <SelectItem value="biologia">Biologia</SelectItem>
                 </SelectContent>
               </Select>
-              <Select defaultValue="all-years">
+              <Select value={selectedYear} onValueChange={setSelectedYear}>
                 <SelectTrigger className="w-40">
                   <SelectValue placeholder="Ano" />
                 </SelectTrigger>
@@ -219,6 +231,9 @@ export default function TeacherHome({ onNavigate }: TeacherHomeProps) {
                   <SelectItem value="7">7º Ano</SelectItem>
                   <SelectItem value="8">8º Ano</SelectItem>
                   <SelectItem value="9">9º Ano</SelectItem>
+                  <SelectItem value="1">1º Ano EM</SelectItem>
+                  <SelectItem value="2">2º Ano EM</SelectItem>
+                  <SelectItem value="3">3º Ano EM</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -255,14 +270,24 @@ export default function TeacherHome({ onNavigate }: TeacherHomeProps) {
                         </span>
                       </div>
                     </div>
-                    <Button 
-                      onClick={() => onNavigate('activities')} 
-                      className="w-full mt-4 bg-secondary hover:bg-secondary/90 text-secondary-foreground" 
-                      size="sm"
-                      data-testid={`button-manage-${classItem.name.replace(/\s+/g, '-').toLowerCase()}`}
-                    >
-                      Gerenciar
-                    </Button>
+                    <div className="flex gap-2 mt-4">
+                      <Button 
+                        onClick={() => onNavigate('activities')} 
+                        className="flex-1 bg-secondary hover:bg-secondary/90 text-secondary-foreground" 
+                        size="sm"
+                        data-testid={`button-manage-${classItem.name.replace(/\s+/g, '-').toLowerCase()}`}
+                      >
+                        Gerenciar
+                      </Button>
+                      <Button 
+                        onClick={() => onNavigate('reports')} 
+                        className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground" 
+                        size="sm"
+                        data-testid={`button-analyze-${classItem.name.replace(/\s+/g, '-').toLowerCase()}`}
+                      >
+                        Analisar
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
