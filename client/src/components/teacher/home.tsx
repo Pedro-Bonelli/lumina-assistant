@@ -177,7 +177,7 @@ export default function TeacherHome({ onNavigate }: TeacherHomeProps) {
           </p>
         </div>
         <Button 
-          onClick={() => onNavigate('activities')} 
+          onClick={() => onNavigate('create-activity')} 
           className="bg-accent hover:bg-accent/90 text-accent-foreground"
           data-testid="button-new-activity"
         >

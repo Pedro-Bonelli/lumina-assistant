@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Plus } from "lucide-react";
 import luminaLogo from "@assets/lumina_logo_v2_1759417231276.png";
 
 interface SidebarItem {
@@ -13,11 +14,12 @@ interface SidebarItem {
 interface SidebarProps {
   items: SidebarItem[];
   onItemClick: (id: string) => void;
+  onNavigate?: (route: string) => void;
 }
 
-export function Sidebar({ items, onItemClick }: SidebarProps) {
+export function Sidebar({ items, onItemClick, onNavigate }: SidebarProps) {
   return (
-    <nav className="w-20 bg-sidebar flex flex-col items-center py-6 space-y-6">
+    <nav className="w-20 bg-sidebar flex flex-col items-center py-6 space-y-6 relative">
       <div className="text-sidebar-primary text-xl">
         <img src={luminaLogo} alt="Lumina Assistant" className="h-6 w-6" />
       </div>
@@ -28,7 +30,10 @@ export function Sidebar({ items, onItemClick }: SidebarProps) {
             <Button
               key={item.id}
               onClick={() => !item.disabled && onItemClick(item.id)}
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 w-10 sidebar-item opacity-50 cursor-not-allowed text-[#f9fafb]"
+              className={cn(
+                "h-10 w-10 sidebar-item text-[#f9fafb]",
+                item.disabled && "opacity-50 cursor-not-allowed"
+              )}
               variant="ghost"
               size="icon"
               disabled={item.disabled}
@@ -40,6 +45,18 @@ export function Sidebar({ items, onItemClick }: SidebarProps) {
           );
         })}
       </div>
+      {onNavigate && (
+        <div className="mt-auto">
+          <Button
+            onClick={() => onNavigate('create-activity')}
+            className="w-12 h-12 rounded-full bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg transition-all hover:shadow-xl hover:scale-105"
+            data-testid="button-quick-create-activity"
+            title="Criar Atividade"
+          >
+            <Plus className="h-6 w-6" />
+          </Button>
+        </div>
+      )}
     </nav>
   );
 }

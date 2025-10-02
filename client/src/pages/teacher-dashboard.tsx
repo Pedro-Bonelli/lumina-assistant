@@ -8,13 +8,14 @@ import TeacherHome from "@/components/teacher/home";
 import TeacherActivities from "@/components/teacher/activities";
 import TeacherReports from "@/components/teacher/reports";
 import TeacherAccountManagement from "@/components/teacher/account-management";
+import { SettingsModal } from "@/components/teacher/settings-modal";
 
 const sidebarItems = [
   { id: 'home', icon: Home, label: 'Home', active: true },
   { id: 'activities', icon: ListTodo, label: 'Atividades', active: true },
   { id: 'reports', icon: BarChart3, label: 'Relatórios', active: true },
   { id: 'accounts', icon: Users, label: 'Gerenciamento', active: true },
-  { id: 'settings', icon: Settings, label: 'Configurações', disabled: true },
+  { id: 'settings', icon: Settings, label: 'Configurações', active: true },
 ];
 
 const pageTitles = {
@@ -27,10 +28,16 @@ const pageTitles = {
 
 export default function TeacherDashboard() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [settingsModalOpen, setSettingsModalOpen] = useState(false);
   const [, setLocation] = useLocation();
   const { logout } = useAuth();
 
   const handleSidebarClick = (id: string) => {
+    if (id === 'settings') {
+      setSettingsModalOpen(true);
+      return;
+    }
+    
     const item = sidebarItems.find(item => item.id === id);
     if (item && item.active) {
       setCurrentPage(id);
@@ -79,6 +86,8 @@ export default function TeacherDashboard() {
           {renderContent()}
         </main>
       </div>
+
+      <SettingsModal open={settingsModalOpen} onOpenChange={setSettingsModalOpen} />
     </div>
   );
 }
