@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Upload, Settings, Brain, CheckCircle, Star } from "lucide-react";
-import luminaLogo from "@assets/Lumina_logo_1758146247673.png";
+import luminaLogo from "@assets/lumina_logo_v2_1759417231276.png";
 
 export default function LandingPage() {
   return (
@@ -41,7 +41,7 @@ export default function LandingPage() {
             <span className="text-secondary-foreground">mais tempo ensinando.</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto">
-            Automatizamos correções e geramos relatórios práticos para você dedicar mais tempo aos alunos.
+            Economize tempo, corrija atividades automaticamente e gere relatórios inteligentes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
@@ -62,6 +62,24 @@ export default function LandingPage() {
               </Button>
             </Link>
           </div>
+        </div>
+      </section>
+      {/* Sobre Nós Section */}
+      <section id="sobre" className="py-16 bg-background">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-8">Sobre Nós</h2>
+          <p className="text-lg text-center text-muted-foreground max-w-4xl mx-auto">
+            Somos uma startup dedicada a revolucionar a educação através da inteligência artificial. Nossa missão é empoderar educadores com ferramentas que otimizam o tempo e melhoram a qualidade do ensino.
+          </p>
+        </div>
+      </section>
+      {/* Nossa Visão Section */}
+      <section className="py-16 bg-muted">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-8">Nossa Visão</h2>
+          <p className="text-lg text-center text-muted-foreground max-w-4xl mx-auto">
+            Acreditamos que a tecnologia deve ser uma aliada do educador, não uma substituta. Por isso, desenvolvemos a Lumina para ser uma extensão natural do trabalho docente, automatizando tarefas repetitivas e fornecendo insights valiosos para que os professores possam focar no que realmente importa: ensinar e inspirar.
+          </p>
         </div>
       </section>
       {/* Como Funciona Section */}
@@ -100,35 +118,55 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      {/* Funcionalidades Section */}
+      {/* De Horas Para Minutos Section */}
       <section id="funcionalidades" className="py-16 bg-muted">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Funcionalidades</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">De horas para minutos</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+            O que antes levava horas de trabalho manual, agora é resolvido em poucos minutos. Mais tempo para se dedicar ao que realmente importa: seus alunos.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-card p-6 rounded-lg shadow-md card-hover">
-              <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center mb-4">
-                <Brain className="h-6 w-6 text-accent-foreground" />
+              <div className="flex items-center mb-3">
+                <span className="text-accent font-bold text-xl mr-3">01</span>
+                <h3 className="text-lg font-semibold">Correção Automática</h3>
               </div>
-              <h3 className="text-xl font-semibold mb-3">Correção Automatizada com IA</h3>
-              <p className="text-muted-foreground">Correção inteligente que entende contexto e aplica critérios pedagógicos personalizados.</p>
+              <p className="text-muted-foreground">IA avançada corrige atividades objetivas e discursivas com precisão pedagógica</p>
             </div>
             <div className="bg-card p-6 rounded-lg shadow-md card-hover">
-              <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center mb-4">
-                <svg className="h-6 w-6 text-accent-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
+              <div className="flex items-center mb-3">
+                <span className="text-accent font-bold text-xl mr-3">02</span>
+                <h3 className="text-lg font-semibold">Relatórios Inteligentes</h3>
               </div>
-              <h3 className="text-xl font-semibold mb-3">Relatórios Pedagógicos Visuais</h3>
-              <p className="text-muted-foreground">Dashboards interativos com insights detalhados sobre o desempenho dos alunos.</p>
+              <p className="text-muted-foreground">Nossa inteligência artificial analisa cada resposta, identifica erros, acertos e aplica critérios pedagógicos personalizados.</p>
             </div>
             <div className="bg-card p-6 rounded-lg shadow-md card-hover">
-              <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center mb-4">
-                <svg className="h-6 w-6 text-accent-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+              <div className="flex items-center mb-3">
+                <span className="text-accent font-bold text-xl mr-3">03</span>
+                <h3 className="text-lg font-semibold">Economia de Tempo</h3>
               </div>
-              <h3 className="text-xl font-semibold mb-3">Painel de Validação do Professor</h3>
-              <p className="text-muted-foreground">Interface intuitiva para revisar e ajustar correções antes da liberação.</p>
+              <p className="text-muted-foreground">Até 95% menos tempo gasto em correções e análises manuais</p>
+            </div>
+            <div className="bg-card p-6 rounded-lg shadow-md card-hover">
+              <div className="flex items-center mb-3">
+                <span className="text-accent font-bold text-xl mr-3">04</span>
+                <h3 className="text-lg font-semibold">Análise de Desempenho</h3>
+              </div>
+              <p className="text-muted-foreground">Gráficos e métricas detalhadas sobre o progresso individual e da turma</p>
+            </div>
+            <div className="bg-card p-6 rounded-lg shadow-md card-hover">
+              <div className="flex items-center mb-3">
+                <span className="text-accent font-bold text-xl mr-3">05</span>
+                <h3 className="text-lg font-semibold">Gestão de Turmas</h3>
+              </div>
+              <p className="text-muted-foreground">Organize suas classes, acompanhe progresso e identifique necessidades</p>
+            </div>
+            <div className="bg-card p-6 rounded-lg shadow-md card-hover">
+              <div className="flex items-center mb-3">
+                <span className="text-accent font-bold text-xl mr-3">06</span>
+                <h3 className="text-lg font-semibold">Dados Seguros</h3>
+              </div>
+              <p className="text-muted-foreground">Criptografia avançada e conformidade com LGPD para proteção total</p>
             </div>
           </div>
         </div>
@@ -137,53 +175,127 @@ export default function LandingPage() {
       <section id="planos" className="py-16 bg-background">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Planos</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-card p-6 rounded-lg shadow-md border border-border">
-              <h3 className="text-2xl font-bold mb-2">Simples</h3>
-              <p className="text-3xl font-bold text-accent mb-4">R$ 29<span className="text-sm text-muted-foreground">/mês</span></p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-success mr-2" />Até 5 turmas</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-success mr-2" />100 correções/mês</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-success mr-2" />Relatórios básicos</li>
-              </ul>
-              <Link href="/login">
-                <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" data-testid="button-plan-simple">
-                  Escolher Plano
-                </Button>
-              </Link>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow-md border-2 border-accent relative">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent text-accent-foreground px-4 py-1 rounded-full text-sm font-medium">
-                Mais Popular
+          
+          {/* Para Professores */}
+          <div className="mb-16">
+            <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 text-accent">Para Professores</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <div className="bg-card p-6 rounded-lg shadow-md border border-border">
+                <div className="flex items-center mb-2">
+                  <span className="text-2xl mr-2">🌱</span>
+                  <h4 className="text-2xl font-bold">Simples</h4>
+                </div>
+                <p className="text-3xl font-bold text-accent mb-4">R$ 24,90<span className="text-sm text-muted-foreground">/mês</span></p>
+                <ul className="space-y-3 mb-6 text-sm">
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Funções essenciais para correção</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Limites na quantidade de correções automáticas</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Capacidade para até 150 alunos*</li>
+                </ul>
+                <Link href="/login">
+                  <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" data-testid="button-plan-teacher-simple">
+                    Escolher Plano
+                  </Button>
+                </Link>
               </div>
-              <h3 className="text-2xl font-bold mb-2">Base</h3>
-              <p className="text-3xl font-bold text-accent mb-4">R$ 59<span className="text-sm text-muted-foreground">/mês</span></p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-success mr-2" />Até 15 turmas</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-success mr-2" />500 correções/mês</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-success mr-2" />Relatórios avançados</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-success mr-2" />Suporte prioritário</li>
-              </ul>
-              <Link href="/login">
-                <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" data-testid="button-plan-base">
-                  Escolher Plano
-                </Button>
-              </Link>
+              <div className="bg-card p-6 rounded-lg shadow-md border-2 border-accent relative">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent text-accent-foreground px-4 py-1 rounded-full text-sm font-medium">
+                  Mais Popular
+                </div>
+                <div className="flex items-center mb-2">
+                  <span className="text-2xl mr-2">🏆</span>
+                  <h4 className="text-2xl font-bold">Base</h4>
+                </div>
+                <p className="text-3xl font-bold text-accent mb-4">R$ 44,90<span className="text-sm text-muted-foreground">/mês</span></p>
+                <ul className="space-y-3 mb-6 text-sm">
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Correções com IA ilimitadas</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Novos formatos de atividades (Mapas Mentais, Apresentações)</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Detecção de Similaridade</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Capacidade para até 300 alunos*</li>
+                </ul>
+                <Link href="/login">
+                  <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" data-testid="button-plan-teacher-base">
+                    Escolher Plano
+                  </Button>
+                </Link>
+              </div>
+              <div className="bg-card p-6 rounded-lg shadow-md border border-border">
+                <div className="flex items-center mb-2">
+                  <span className="text-2xl mr-2">🚀</span>
+                  <h4 className="text-2xl font-bold">Pro</h4>
+                </div>
+                <p className="text-3xl font-bold text-accent mb-4">R$ 79,90<span className="text-sm text-muted-foreground">/mês</span></p>
+                <ul className="space-y-3 mb-6 text-sm">
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Detecção de Similaridade Profunda (Fontes da Internet)</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Novos formatos de atividades (Áudios, Vídeos)</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Prioridade no servidor, acesso antecipado, suporte prioritário</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Capacidade para até 600 alunos*</li>
+                </ul>
+                <Link href="/login">
+                  <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" data-testid="button-plan-teacher-pro">
+                    Escolher Plano
+                  </Button>
+                </Link>
+              </div>
             </div>
-            <div className="bg-card p-6 rounded-lg shadow-md border border-border">
-              <h3 className="text-2xl font-bold mb-2">PRO</h3>
-              <p className="text-3xl font-bold text-accent mb-4">R$ 99<span className="text-sm text-muted-foreground">/mês</span></p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-success mr-2" />Turmas ilimitadas</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-success mr-2" />Correções ilimitadas</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-success mr-2" />Analytics avançado</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-success mr-2" />Integração API</li>
-              </ul>
-              <Link href="/login">
-                <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" data-testid="button-plan-pro">
-                  Escolher Plano
-                </Button>
-              </Link>
+          </div>
+
+          {/* Para Instituições */}
+          <div>
+            <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 text-accent">Para Instituições</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <div className="bg-card p-6 rounded-lg shadow-md border border-border">
+                <div className="flex items-center mb-2">
+                  <span className="text-2xl mr-2">🔍</span>
+                  <h4 className="text-2xl font-bold">Simples</h4>
+                </div>
+                <p className="text-3xl font-bold text-accent mb-4">R$ 609,90<span className="text-sm text-muted-foreground">/mês</span></p>
+                <ul className="space-y-3 mb-6 text-sm">
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Pacote para 15 professores e 600 alunos*</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Licenças Base para Professores</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Gerenciamento de usuários e turmas</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Relatórios escolares básicos</li>
+                </ul>
+                <Link href="/login">
+                  <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" data-testid="button-plan-institution-simple">
+                    Escolher Plano
+                  </Button>
+                </Link>
+              </div>
+              <div className="bg-card p-6 rounded-lg shadow-md border border-border">
+                <div className="flex items-center mb-2">
+                  <span className="text-2xl mr-2">🏫</span>
+                  <h4 className="text-2xl font-bold">Base</h4>
+                </div>
+                <p className="text-3xl font-bold text-accent mb-4">R$ 1079,90<span className="text-sm text-muted-foreground">/mês</span></p>
+                <ul className="space-y-3 mb-6 text-sm">
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Pacote para 30 professores e 1800 alunos*</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Licenças Base para Professores</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Relatórios avançados e completos</li>
+                </ul>
+                <Link href="/login">
+                  <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" data-testid="button-plan-institution-base">
+                    Escolher Plano
+                  </Button>
+                </Link>
+              </div>
+              <div className="bg-card p-6 rounded-lg shadow-md border border-border">
+                <div className="flex items-center mb-2">
+                  <span className="text-2xl mr-2">🌐</span>
+                  <h4 className="text-2xl font-bold">Pro</h4>
+                </div>
+                <p className="text-3xl font-bold text-accent mb-4">R$ 3359,90<span className="text-sm text-muted-foreground">/mês</span></p>
+                <ul className="space-y-3 mb-6 text-sm">
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Pacote para 60 professores e 3500 alunos*</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Licenças Pro para Professores</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Relatórios personalizáveis</li>
+                  <li className="flex items-start"><CheckCircle className="h-4 w-4 text-success mr-2 mt-0.5 flex-shrink-0" />Prioridade no servidor, acesso antecipado, suporte prioritário</li>
+                </ul>
+                <Link href="/login">
+                  <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" data-testid="button-plan-institution-pro">
+                    Escolher Plano
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
